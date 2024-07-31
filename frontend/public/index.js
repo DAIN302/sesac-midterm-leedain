@@ -10,27 +10,61 @@ window.addEventListener('DOMContentLoaded', ()=>{
             let hcode = ''
 
             todoListData.forEach(ele=>{
-
+                hcode += `
+                <li>
+                    <div>
+                        <input type="checkbox">
+                    </div>
+                    <div>
+                        <p>${ele.title}</p>
+                    </div>
+                    <div>
+                        <button class="delete-btn">X</button>
+                    </div>
+                </li>
+                `
             })
-
-            
+            listTodo.innerHTML = hcode
         }catch(err){
-
+            console.log(err);
         }
     }
     getTodos();
 
     const todoBtn = document.querySelector('#todo-submit')
-    const inputtodo = document.querySelector('#todo-write')
+    let inputtodo = document.querySelector('#todo-write')
 
     todoBtn.addEventListener('click', addTodo)
     inputtodo.addEventListener('keypress', (e)=>{
-        
+        if(e.keyCode === 13){
+            addTodo(e)
+        }
     })
 
-    function addTodo(event){
+    function addTodo(e){
         e.preventDefault();
-        console.log('click');
+        
+        if(!inputtodo.checkVisibility()){
+            return;
+        }
+        
+        let hcode = `
+            <li>
+                <div>
+                    <input type="checkbox">
+                </div>
+                <div>
+                    <p>${inputtodo.value}</p>
+                </div>
+                <div>
+                    <button class="delete-btn">X</button>
+                </div>
+            </li>
+        `
+        console.log(listTodo);
+        listTodo.insertAdjacentHTML('beforeend', hcode)
+
+        inputtodo.value = ''
     }
     
 })

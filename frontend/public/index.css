@@ -74,6 +74,7 @@ th {
 /* header */
 header {
     display: flex;
+    flex-direction: column;
 }
 header h1 {
     
@@ -83,4 +84,10 @@ header h1 img {
     width: 100%;
     height: 100%;
 }
+
+/* main */
+.list-todo li {
+    display: flex;
+}
+
 
