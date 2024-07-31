@@ -5,7 +5,6 @@ window.addEventListener('DOMContentLoaded', ()=>{
         try {
             const todoList = await axios.get('https://jsonplaceholder.typicode.com/todos')
             const todoListData = todoList.data.slice(0, 10)
-            console.log(todoListData);
 
             let hcode = ''
 
@@ -25,6 +24,11 @@ window.addEventListener('DOMContentLoaded', ()=>{
                 `
             })
             listTodo.innerHTML = hcode
+
+            const deleteBtn = document.querySelectorAll('.delete-btn')
+            console.log(deleteBtn);
+            
+
         }catch(err){
             console.log(err);
         }
@@ -32,7 +36,7 @@ window.addEventListener('DOMContentLoaded', ()=>{
     getTodos();
 
     const todoBtn = document.querySelector('#todo-submit')
-    let inputtodo = document.querySelector('#todo-write')
+    let inputtodo = document.querySelector('#todo_write')
 
     todoBtn.addEventListener('click', addTodo)
     inputtodo.addEventListener('keypress', (e)=>{
@@ -43,8 +47,10 @@ window.addEventListener('DOMContentLoaded', ()=>{
 
     function addTodo(e){
         e.preventDefault();
-        
-        if(!inputtodo.checkVisibility()){
+        const writeForm = document.forms['write-todoForm']
+
+        if(!writeForm.todo_write.checkValidity()){
+            alert('내용을 입력해주세요')
             return;
         }
         
@@ -61,10 +67,15 @@ window.addEventListener('DOMContentLoaded', ()=>{
                 </div>
             </li>
         `
-        console.log(listTodo);
         listTodo.insertAdjacentHTML('beforeend', hcode)
 
         inputtodo.value = ''
+    }
+
+
+
+    function deleteTodo() {
+        
     }
     
 })
