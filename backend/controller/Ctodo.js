@@ -15,10 +15,8 @@ exports.getTodos = async (req,res) => {
 // todo 추가
 exports.postTodo = async (req,res) =>{
     try {
-        console.log(req.body);
         const { title, done } = req.body
         
-
         const newTodo = await Todo.create({
             title, done
         })
@@ -32,7 +30,6 @@ exports.postTodo = async (req,res) =>{
 // 특정 id 가진 todo 조회
 exports.getTodo = async (req, res) => {
     try {
-        console.log(req.params);
         const { id }   = req.params
     
         const todo = await Todo.findOne({
@@ -58,8 +55,6 @@ exports.patchTodo = async (req, res) => {
             { done },
             { where : { id }}
         )
-
-        console.log('수정됨?',updateTodo[0]);
         if(updateTodo[0]){
             const patchTodo = await Todo.findOne({
                 where : {id}
