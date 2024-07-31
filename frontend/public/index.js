@@ -1,6 +1,7 @@
 window.addEventListener('DOMContentLoaded', ()=>{
     const listTodo = document.querySelector('.list-todo ul')
 
+    // 초기 Todo 목록 불러오기
     async function getTodos() {
         try {
             const todoList = await axios.get('https://jsonplaceholder.typicode.com/todos')
@@ -17,7 +18,7 @@ window.addEventListener('DOMContentLoaded', ()=>{
                     <div class="todo-content">
                         <p>${ele.title}</p>
                     </div>
-                    <div>
+                    <div class="btn-box">
                         <button class="delete-btn">X</button>
                     </div>
                 </li>
@@ -44,6 +45,7 @@ window.addEventListener('DOMContentLoaded', ()=>{
         }
     })
 
+    // Todo 추가
     function addTodo(e){
         e.preventDefault();
         const writeForm = document.forms['write-todoForm']
@@ -61,7 +63,7 @@ window.addEventListener('DOMContentLoaded', ()=>{
                 <div class="todo-content">
                     <p>${inputtodo.value}</p>
                 </div>
-                <div>
+                <div class="btn-box">
                     <button class="delete-btn">X</button>
                 </div>
             </li>
@@ -75,6 +77,7 @@ window.addEventListener('DOMContentLoaded', ()=>{
         doneTodo()
     }
 
+    // todo 삭제
     function deleteTodo() {
         const deleteBtn = document.querySelectorAll('.delete-btn')
             
@@ -88,6 +91,7 @@ window.addEventListener('DOMContentLoaded', ()=>{
         })
     }  
 
+    // todo 완료
     function doneTodo(){
         const todoCheck = $('.todo-check')
         todoCheck.change(function(){

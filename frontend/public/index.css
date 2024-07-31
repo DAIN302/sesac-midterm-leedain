@@ -122,6 +122,11 @@ main {
 
 }
 
+.list-todo {
+    width: 90%;
+    margin: 0 auto;
+}
+
 .list-todo ul {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -131,11 +136,10 @@ main {
 
 .list-todo li {
     display: flex;
-    justify-content: space-between;
 }
 
 .list-todo li.done {
-    color : red;
+    color :  #0AC82F;
     text-decoration: line-through;
 }
 
@@ -147,6 +151,10 @@ main {
 
 .todo-content {
     text-align: left;
+}
+
+.btn-box {
+    margin-left: auto;
 }
 
 
