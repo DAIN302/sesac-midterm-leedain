@@ -1,14 +1,15 @@
 const express = require('express');
 const app = express();
 const PORT = 8080;
-const router = require('./routes/index');
+const router = require('./routes/todo');
+const { sequelize } = require('./models/index')
 
 //  body-parser 미들웨어 등록
 app.use(express.urlencoded({extended : true}));
 app.use(express.json());
 
 // 라우터 등록
-app.use('/', router);
+app.use('/todos', router);
 
 // 모델 등록
 sequelize.sync({force:false}) 
