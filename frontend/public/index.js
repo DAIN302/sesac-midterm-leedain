@@ -49,10 +49,8 @@ window.addEventListener('DOMContentLoaded', ()=>{
     function addTodo(e){
         e.preventDefault();
         const writeForm = document.forms['write-todoForm']
-        var emptyRule = /\s/g;
-        console.log(emptyRule.test(writeForm.todo_write.value));
 
-        if(!writeForm.todo_write.checkValidity() || emptyRule.test(writeForm.todo_write.value)){
+        if(!writeForm.todo_write.checkValidity() || writeForm.todo_write.value == " "){
             alert('내용을 입력해주세요')
             return;
         }
@@ -63,7 +61,7 @@ window.addEventListener('DOMContentLoaded', ()=>{
                     <input type="checkbox" class="todo-check">
                 </div>
                 <div class="todo-content">
-                    <p>${inputtodo.value}</p>
+                    <p>${inputtodo.value.trim()}</p>
                 </div>
                 <div class="btn-box">
                     <button class="delete-btn">X</button>
