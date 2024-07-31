@@ -84,9 +84,7 @@ window.addEventListener('DOMContentLoaded', ()=>{
         // 엑스 버튼 누르면 삭제
         deleteBtn.forEach(ele=>{
             ele.addEventListener('click', function(){
-                console.log($(this).parents('li'));
                 $(this).parents('li').remove()
-
             })
         })
     }  
@@ -95,11 +93,9 @@ window.addEventListener('DOMContentLoaded', ()=>{
     function doneTodo(){
         const todoCheck = $('.todo-check')
         todoCheck.change(function(){
-            console.log($(this).prop('checked'));
+            const isDone = $(this).prop('checked')
 
-            const done = $(this).prop('checked')
-
-            if(done){
+            if(isDone){
                 $(this).parents('li').addClass('done')
             } else {
                 $(this).parents('li').removeClass('done')

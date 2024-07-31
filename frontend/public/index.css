@@ -139,7 +139,7 @@ main {
 }
 
 .list-todo li.done {
-    color :  #0AC82F;
+    color :  #aaa;
     text-decoration: line-through;
 }
 
