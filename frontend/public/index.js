@@ -50,9 +50,9 @@ window.addEventListener('DOMContentLoaded', ()=>{
         e.preventDefault();
         const writeForm = document.forms['write-todoForm']
         var emptyRule = /\s/g;
-        console.log(writeForm.todo_write.value);
+        console.log(emptyRule.test(writeForm.todo_write.value));
 
-        if(!writeForm.todo_write.checkValidity() || writeForm.todo_write.value === " "){
+        if(!writeForm.todo_write.checkValidity() || emptyRule.test(writeForm.todo_write.value)){
             alert('내용을 입력해주세요')
             return;
         }
