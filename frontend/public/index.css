@@ -71,13 +71,19 @@ th {
 
 
 /* 본문 style */
+body {
+    max-width: 800px;
+    margin: 0 auto;
+}
 /* header */
 header {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    background-color: #0AC82F;
 }
 header h1 {
-    
+    width: 200px;
 }
 
 header h1 img {
@@ -85,9 +91,62 @@ header h1 img {
     height: 100%;
 }
 
+header h2 {
+    font-size: 36px;
+    color : #fff;
+}
+
 /* main */
+main {
+    background-color: #E5FFEB;
+}
+
+.write-todo {
+    display: flex;
+    justify-content: center;
+    padding : 20px 0;    
+}
+
+#todo_write {
+    background-color: transparent;
+    border : 1px solid #0AC82F;
+    padding : 5px 2px;
+    border-radius: 5px;
+}
+
+#todo-submit {
+    background-color: transparent;
+    border : 1px solid #0AC82F;
+    padding : 5px 10px;
+    border-radius: 5px;
+
+}
+
+.list-todo ul {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-column-gap: min(2vw, 50px);
+    grid-row-gap: min(1.5vw, 50px);   
+}
+
 .list-todo li {
     display: flex;
+    justify-content: space-between;
+}
+
+.delete-btn {
+    background-color: #0AC82F;
+    color : #fff;
+    border: none;
+}
+
+
+
+/* 640px 이하 미디어쿼리 */
+@media screen and (max-width: 959px) {
+    .list-todo ul {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
 
