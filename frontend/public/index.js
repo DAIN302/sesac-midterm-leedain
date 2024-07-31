@@ -50,7 +50,7 @@ window.addEventListener('DOMContentLoaded', ()=>{
         e.preventDefault();
         const writeForm = document.forms['write-todoForm']
 
-        if(!writeForm.todo_write.checkValidity() || writeForm.todo_write.value == " "){
+        if(!writeForm.todo_write.checkValidity() || writeForm.todo_write.value == " " || writeForm.todo_write.value == ""){
             alert('내용을 입력해주세요')
             return;
         }
