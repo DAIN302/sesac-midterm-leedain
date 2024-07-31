@@ -25,7 +25,7 @@ exports.postTodo = async (req,res) =>{
         res.json(newTodo)
     } catch(err){
         console.error(err);
-        res.status(500).send('Internal Server Error')
+        res.status(500).json({"message" : "Internal Server Error"})
     }
 }
 
@@ -47,7 +47,33 @@ exports.getTodo = async (req, res) => {
         console.error(err);
         res.status(500).send('Internal Server Error')
     }
+}
 
+// 특정 ID의 todo 수정
+exports.patchTodo = async (req, res) => {
+    try{
+        const { id } = req.params;
+        const { done } = req.body;
+        const updateTodo = await Todo.update(
+            { done },
+            { where : { id }}
+        )
+        console.log(updateTodo);
+        if(updateTodo){
+            res.json(updateTodo)
+        } else {
+            res.json({"message" : "Todo not found"})
+        }
+    } catch(err){
+        console.error(err);
+    }
+}
 
+exports.deleteTodo = async (req, res) => {
+    try{
+
+    }catch(err){
+        
+    }
 }
 
