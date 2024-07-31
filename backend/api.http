@@ -1,0 +1,66 @@
+@server = http://localhost:8080
+
+
+### Todo 추가 (case1. 요청 본문에 title, done 필드 모두 작성하는 경우)
+POST {{server}}/todos
+Content-Type: application/json; charset=UTF-8
+
+{
+  "title": "책 읽기",
+  "done": false
+}
+
+
+### Todo 추가 (case2. 요청 본문에 title 필드만 작성하는 경우)
+POST {{server}}/todos
+Content-Type: application/json; charset=UTF-8
+
+{
+  "title": "빵 먹기"
+}
+
+### Todo 추가 (case3. 요청 본문에 done 필드만 작성하는 경우)
+POST {{server}}/todos
+Content-Type: application/json; charset=UTF-8
+
+{
+  "done": false
+}
+
+
+### Todo 전체 조회
+GET {{server}}/todos
+
+
+### 특정 ID를 갖는 Todo 조회 (case1. 존재하는 Todo ID로 조회하는 경우)
+GET {{server}}/todos/1
+
+
+### 특정 ID를 갖는 Todo 조회 (case2. 존재하지 않는 Todo ID로 조회하는 경우)
+GET {{server}}/todos/100
+
+
+### 특정 ID를 갖는 Todo 수정 (case1. 존재하는 Todo ID로 수정하는 경우)
+PATCH {{server}}/todos/1
+Content-Type: application/json; charset=UTF-8
+
+{
+  "done": true
+}
+
+
+### 특정 ID를 갖는 Todo 수정 (case2. 존재하지 않는 Todo ID로 수정하는 경우)
+PATCH {{server}}/todos/100
+Content-Type: application/json; charset=UTF-8
+
+{
+  "done": true
+}
+
+
+### 특정 ID를 갖는 Todo 삭제 (case1. 존재하는 Todo ID로 삭제하는 경우)
+DELETE {{server}}/todos/1
+
+
+### 특정 ID를 갖는 Todo 삭제 (case2. 존재하지 않는 Todo ID로 삭제하는 경우)
+DELETE {{server}}/todos/100
