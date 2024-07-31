@@ -12,9 +12,9 @@ window.addEventListener('DOMContentLoaded', ()=>{
                 hcode += `
                 <li>
                     <div>
-                        <input type="checkbox">
+                        <input type="checkbox" class="todo-check">
                     </div>
-                    <div>
+                    <div class="todo-content">
                         <p>${ele.title}</p>
                     </div>
                     <div>
@@ -25,10 +25,9 @@ window.addEventListener('DOMContentLoaded', ()=>{
             })
             listTodo.innerHTML = hcode
 
-            const deleteBtn = document.querySelectorAll('.delete-btn')
-            console.log(deleteBtn);
-            
+            deleteTodo();
 
+            doneTodo();            
         }catch(err){
             console.log(err);
         }
@@ -57,9 +56,9 @@ window.addEventListener('DOMContentLoaded', ()=>{
         let hcode = `
             <li>
                 <div>
-                    <input type="checkbox">
+                    <input type="checkbox" class="todo-check">
                 </div>
-                <div>
+                <div class="todo-content">
                     <p>${inputtodo.value}</p>
                 </div>
                 <div>
@@ -70,12 +69,37 @@ window.addEventListener('DOMContentLoaded', ()=>{
         listTodo.insertAdjacentHTML('beforeend', hcode)
 
         inputtodo.value = ''
+
+        deleteTodo()
+
+        doneTodo()
     }
-
-
 
     function deleteTodo() {
-        
+        const deleteBtn = document.querySelectorAll('.delete-btn')
+            
+        // 엑스 버튼 누르면 삭제
+        deleteBtn.forEach(ele=>{
+            ele.addEventListener('click', function(){
+                console.log($(this).parents('li'));
+                $(this).parents('li').remove()
+
+            })
+        })
+    }  
+
+    function doneTodo(){
+        const todoCheck = $('.todo-check')
+        todoCheck.change(function(){
+            console.log($(this).prop('checked'));
+
+            const done = $(this).prop('checked')
+
+            if(done){
+                $(this).parents('li').addClass('done')
+            } else {
+                $(this).parents('li').removeClass('done')
+            }
+        })
     }
-    
 })

@@ -78,8 +78,8 @@ body {
 /* header */
 header {
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    justify-content: center;
+    gap: 0 5px;
     background-color: #0AC82F;
 }
 header h1 {
@@ -134,19 +134,39 @@ main {
     justify-content: space-between;
 }
 
+.list-todo li.done {
+    color : red;
+    text-decoration: line-through;
+}
+
 .delete-btn {
     background-color: #0AC82F;
     color : #fff;
     border: none;
 }
 
+.todo-content {
+    text-align: left;
+}
 
 
-/* 640px 이하 미디어쿼리 */
+
+/* 959px 이하 미디어쿼리 */
 @media screen and (max-width: 959px) {
     .list-todo ul {
         grid-template-columns: repeat(2, 1fr);
     }
 }
+/* 539px 이하 미디어쿼리 */
+@media screen and (max-width: 539px) {
+    .list-todo ul {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    header {
+        flex-direction: column;
+        align-items: center;
+     
+}}
 
 
