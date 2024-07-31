@@ -14,5 +14,8 @@ router.get('/:id', controller.getTodo);
 // 특정 id의 todo 수정
 router.patch('/:id', controller.patchTodo);
 
+// 특정 id의 todo 삭제
+router.delete('/:id', controller.deleteTodo);
+
 
 module.exports = router;

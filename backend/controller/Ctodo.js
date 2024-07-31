@@ -58,22 +58,40 @@ exports.patchTodo = async (req, res) => {
             { done },
             { where : { id }}
         )
-        console.log(updateTodo);
-        if(updateTodo){
-            res.json(updateTodo)
+
+        console.log('수정됨?',updateTodo[0]);
+        if(updateTodo[0]){
+            const patchTodo = await Todo.findOne({
+                where : {id}
+            })
+            return res.json(patchTodo)
         } else {
-            res.json({"message" : "Todo not found"})
+            return res.json({"message" : "Todo not found"})
         }
     } catch(err){
         console.error(err);
+        res.status(500).send('Internal Server Error')
     }
 }
 
 exports.deleteTodo = async (req, res) => {
     try{
+        const { id } = req.params;
 
+        const isDeleted = await Todo.destroy({
+            where : { id }
+        })
+        if(isDeleted){
+            return res.json({
+                "message" : "Todo deleted successfully",
+                "deletedId" : id
+            })
+        } else {
+            return res.json({"message" : "Todo not found"})
+        }
     }catch(err){
-        
+        console.error(err);
+        res.status(500).send('Internal Server Error')
     }
 }
 
